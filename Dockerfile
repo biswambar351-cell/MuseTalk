@@ -19,6 +19,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python3 \
     python3-pip \
     python3-dev \
+    build-essential \
     git \
     curl \
     ffmpeg \
@@ -42,12 +43,12 @@ RUN python3 -m pip install \
 
 COPY requirements.txt /app/requirements.txt
 
-RUN python3 -m pip install --retries 10 --timeout 300 -r /app/requirements.txt && \
-    python3 -m pip install --retries 10 --timeout 300 --no-cache-dir -U openmim && \
-    mim install mmengine && \
-    mim install "mmcv==2.0.1" && \
-    mim install "mmdet==3.1.0" && \
-    mim install "mmpose==1.1.0"
+RUN python3 -m pip install --retries 10 --timeout 300 -r /app/requirements.txt
+RUN python3 -m pip install --retries 10 --timeout 300 --no-cache-dir -U openmim
+RUN mim install mmengine
+RUN mim install "mmcv==2.0.1"
+RUN mim install "mmdet==3.1.0"
+RUN mim install "mmpose==1.1.0"
 
 COPY . /app
 
