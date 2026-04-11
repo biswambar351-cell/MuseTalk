@@ -51,10 +51,10 @@ RUN python3 -m pip install --retries 10 --timeout 300 -r /app/requirements.txt &
 
 COPY . /app
 
-RUN chmod +x /app/docker-entrypoint.sh /app/download_weights.sh
+RUN chmod +x /app/docker-entrypoint.sh /app/serverless-entrypoint.sh /app/download_weights.sh
 
 RUN if [ "$DOWNLOAD_WEIGHTS_AT_BUILD" = "1" ]; then bash /app/download_weights.sh; fi
 
 EXPOSE 7860
 
-ENTRYPOINT ["/app/docker-entrypoint.sh"]
+ENTRYPOINT ["/app/serverless-entrypoint.sh"]
