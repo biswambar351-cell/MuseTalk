@@ -48,7 +48,7 @@ RUN python3 -m pip install --retries 10 --timeout 300 --no-cache-dir -U openmim
 RUN mim install mmengine
 RUN mim install "mmcv==2.0.1"
 RUN mim install "mmdet==3.1.0"
-RUN python3 -m pip install --retries 10 --timeout 300 "mmpose==1.1.0"
+RUN python3 -m pip install --retries 10 --timeout 300 "mmpose==1.3.2"
 
 COPY . /app
 
