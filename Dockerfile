@@ -49,7 +49,7 @@ RUN mim install mmengine
 RUN mim install "mmcv==2.0.1"
 RUN mim install "mmdet==3.1.0"
 RUN git clone --depth 1 --branch v1.3.2 https://github.com/open-mmlab/mmpose.git /tmp/mmpose
-RUN cd /tmp/mmpose && python3 -m pip install --retries 10 --timeout 300 -v -e .
+RUN python3 -m pip install --retries 10 --timeout 300 --no-deps --no-build-isolation /tmp/mmpose
 
 COPY . /app
 
